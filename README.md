@@ -74,16 +74,16 @@ Pypher utiliza un **subconjunto cuidadosamente seleccionado** de caracteres espe
 ## 🎨 Capturas de Pantalla
 
 ### Interfaz Principal
-![Interfaz Principal](screenshots/interfaz_principal.png)
+![Interfaz Principal](interfaz_principal.png)
 
 ### Generando una Contraseña
-![Generando Contraseña](screenshots/generando.png)
+![Generando Contraseña](generando.png)
 
 ### Guardando Archivo
-![Guardando Archivo](screenshots/guardando.png)
+![Guardando Archivo](guardando.png)
 
 ### Ejemplo de Archivo Generado
-![Archivo Generado](screenshots/archivo_generado.png)
+![Archivo Generado](archivo_generado.png)
 
 ---
 
