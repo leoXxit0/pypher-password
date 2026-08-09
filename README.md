@@ -25,7 +25,12 @@ Sigue estos pasos para ejecutar Pypher en tu computadora:
 git clone https://github.com/leoXxit0/pypher-password.git
 cd pypher-password
 ```
-### 2. Ejecutar
+### 2. Crear y activar un entorno virtual (recomendado)
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+### 3. Ejecutar la aplicación
 ```bash
 python pypher.py
 ```
