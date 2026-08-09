@@ -288,4 +288,4 @@ Caracteres usados : Letras + Números + !@#$%&()-_=+[]{{}}?
             print(f"\n{CyberColors.CYBER_GREEN}✅ ARCHIVO GUARDADO EXITOSAMENTE{CyberColors.RESET}")
             print(f"{CyberColors.CYBER_BLUE}📁 {os.path.abspath(nombre)}{CyberColors.RESET}")
         except Exception as e:
-            print(f"\n{CyberColors.CYBER_RED}❌ Error al guardar: {e}{Cy
+            print(f"\n{CyberColors.CYBER_RED}❌ Error al guardar: {e}{CyberColors.RESET}")
