@@ -42,42 +42,14 @@ git clone https://github.com/leoXxit0/pypher-password.git
 cd pypher-password
 
 ---
+# 🔒 Filtro de Símbolos: Seguridad y Compatibilidad
+Pypher elige cuidadosamente los caracteres especiales para que tu contraseña sea fuerte y funcione en cualquier sistema (bancos, redes sociales, servidores, etc.).
 
-## 🔒 Filtro de Símbolos: ¿Por qué estos caracteres y no otros?
+## ✅ Caracteres Seguros (Los que usamos)
+Usamos un conjunto de símbolos universalmente aceptados:
+! @ # $ % & ( ) - _ = + [ ] { } ?
 
-Pypher utiliza un **subconjunto cuidadosamente seleccionado** de caracteres especiales para garantizar la máxima compatibilidad con todo tipo de sistemas.
-
-### ✅ Caracteres que SÍ usamos
-
-| Carácter | ¿Por qué es seguro? |
-|:---|:---|
-| `! @ # $ % & ( ) - _ = + [ ] { } ?` | Son **compatibles con el 99% de los sistemas**: bancos, correos, redes sociales, servidores Linux/Windows, bases de datos, APIs, etc. |
-
-### ❌ Caracteres que NO usamos
-
-| Carácter | ¿Por qué NO se usan? |
-|:---|:---|
-| `'` (comilla simple) | Puede romper consultas SQL o comandos en shell |
-| `"` (comilla doble) | Problemática en JSON, CSV y comandos |
-| `\` (barra invertida) | Carácter de escape en muchos lenguajes |
-| `/` (barra inclinada) | Conflictos con rutas de archivos |
-| `< >` (mayor/menor) | Interpretados como HTML/XML |
-| `|` (pipe) | Ejecuta comandos en terminal |
-| `*` (asterisco) | Comodín en sistemas de archivos |
-| `` ` `` (acento grave) | Ejecuta comandos en Bash |
-| `~` (tilde) | Directorio home en Linux/Unix |
-
-### 📊 Resumen visual
-
-| Tipo de sistema | Problema con caracteres problemáticos |
-|:---|:---|
-| **Bases de datos** | `'` y `"` rompen consultas SQL |
-| **Sistemas Linux** | `|`, `<`, `>`, `` ` `` ejecutan comandos no deseados |
-| **Archivos/URLs** | `/`, `\`, `~` confunden las rutas |
-| **HTML/Web** | `<`, `>` interpretados como etiquetas |
-| **JSON/CSV** | `"` y `,` rompen la estructura |
-
-> **Conclusión**: Pypher usa un **subconjunto seguro** de caracteres especiales para garantizar que tu contraseña funcione en **cualquier sistema**, sin importar la plataforma o tecnología.
+## ¿Por qué? Son compatibles con el 99% de los sistemas, desde bases de datos hasta comandos en terminal.
 
 ---
 
