@@ -41,6 +41,7 @@ python3 pypher_linux.py
 ### Tutorial 
 ![pypher en linux](tutorial.gif)
 
+---
 ### Filtro de Símbolos: Seguridad y Compatibilidad
 Pypher elige cuidadosamente los caracteres especiales para que tu contraseña sea fuerte y funcione en cualquier sistema (bancos, redes sociales, servidores, etc.).
 
@@ -53,19 +54,28 @@ Son compatibles con el 99% de los sistemas, desde bases de datos hasta comandos 
 
 ---
 
-## Versión con Interfaz
+## 🚀 Instalación y Ejecución (Versión con Interfaz)
 
-### Interfaz Principal
-![Interfaz Principal](interfaz_principal.png)
+### 1. Instalar Tkinter (interfaz gráfica)
 
-### Generando una Contraseña
+```bash
+sudo apt install python3-tk -y
+```
+### 2. Instalar pyperclip (portapapeles OPCIONAL)
+```bash
+pip3 install pyperclip
+```
+### 3. Clonar el repositorio
+
+```bash
+git clone https://github.com/leoXxit0/pypher-password.git
+cd pypher-password
+```
+### 4. Ejecutar
+```bash
+python3 pypher_linux.py
+```
 ![Generando Contraseña](generando.png)
-
-### Guardando Archivo
-![Guardando Archivo](guardando.png)
-
-### Ejemplo de Archivo Generado
-![Archivo Generado](archivo_generado.png)
 
 ---
 
