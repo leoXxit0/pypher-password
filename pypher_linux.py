@@ -10,27 +10,20 @@ class GeneradorContrasenasCLI:
         self.caracteres_seguros = "!@#$%&()-_=+[]{}?"
         self.caracteres_completos = string.ascii_letters + string.digits + self.caracteres_seguros
         
-        # Colores Cyberpunk mejorados
+        # Colores Cyberpunk
         self.colores = {
-            "verde": "\033[38;2;0;255;255m",      # Cyan neón
-            "rojo": "\033[38;2;255;0;100m",       # Rosa neón
-            "naranja": "\033[38;2;255;165;0m",    # Naranja neón
-            "azul": "\033[38;2;0;150;255m",       # Azul neón
-            "morado": "\033[38;2;150;0;255m",     # Púrpura neón
-            "cyan": "\033[38;2;0;255;200m",       # Verde azulado
+            "verde": "\033[38;2;0;255;200m",
+            "rojo": "\033[38;2;255;0;100m",
+            "naranja": "\033[38;2;255;165;0m",
+            "azul": "\033[38;2;0;150;255m",
+            "morado": "\033[38;2;150;0;255m",
+            "cyan": "\033[38;2;0;255;255m",
             "negrita": "\033[1m",
             "reset": "\033[0m",
-            "fondo": "\033[48;2;10;10;30m",       # Fondo oscuro con azul
-            "amarillo": "\033[38;2;255;255;0m",   # Amarillo neón
-            "rosa": "\033[38;2;255;0;255m",       # Rosa fuerte
-            "blanco": "\033[38;2;220;220;255m"    # Blanco azulado
-        }
-        
-        self.bordes = {
-            "sup": "▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄",
-            "inf": "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀",
-            "lat": "▌",
-            "der": "▐"
+            "amarillo": "\033[38;2;255;255;0m",
+            "rosa": "\033[38;2;255;0;255m",
+            "blanco": "\033[38;2;220;220;255m",
+            "gris": "\033[38;2;150;150;170m"
         }
 
     def generar_contrasena(self, longitud=12):
@@ -109,158 +102,128 @@ class GeneradorContrasenasCLI:
         try:
             with open(nombre_archivo, "w", encoding="utf-8") as archivo:
                 archivo.write(contenido)
-            print(f"{self.colores['verde']}╔═══════════════════════════════════════════════════════════════════════╗")
-            print(f"║ {self.colores['verde']}✓ ARCHIVO GUARDADO EXITOSAMENTE: {self.colores['blanco']}{nombre_archivo:<45}║")
-            print(f"{self.colores['verde']}╚═══════════════════════════════════════════════════════════════════════╝{self.colores['reset']}")
+            print(f"{self.colores['verde']}│ ✓ Archivo guardado: {self.colores['blanco']}{nombre_archivo}{self.colores['reset']}")
             return True
         except Exception as e:
-            print(f"{self.colores['rojo']}╔═══════════════════════════════════════════════════════════════════════╗")
-            print(f"║ {self.colores['rojo']}✗ ERROR: {str(e):<60}║")
-            print(f"{self.colores['rojo']}╚═══════════════════════════════════════════════════════════════════════╝{self.colores['reset']}")
+            print(f"{self.colores['rojo']}│ ✗ Error al guardar: {str(e)}{self.colores['reset']}")
             return False
 
     def mostrar_estadisticas(self, contrasena):
-        """Muestra estadísticas detalladas de la contraseña con estilo cyberpunk"""
+        """Muestra estadísticas detalladas de la contraseña"""
         stats = self.analizar_fortaleza(contrasena)
         
-        # Barra de progreso cyberpunk
+        # Barra de progreso
         bar_len = 20
         filled = int((stats['porcentaje'] / 100) * bar_len)
         bar = "█" * filled + "░" * (bar_len - filled)
         
-        print(f"\n{self.colores['morado']}╔═══════════════════════════════════════════════════════════════════════╗")
-        print(f"║ {self.colores['verde']}███ {self.colores['rosa']}ESTADÍSTICAS DE SEGURIDAD {self.colores['verde']}███{self.colores['blanco']}{' ' * 36}║")
-        print(f"{self.colores['morado']}╠═══════════════════════════════════════════════════════════════════════╣")
-        print(f"║ {self.colores['azul']}🔑 Longitud: {self.colores['blanco']}{str(stats['longitud'])+' caracteres':<31} {self.colores['azul']}🔢 Números: {self.colores['blanco']}{str(stats['digitos']):<8} ║")
-        print(f"║ {self.colores['verde']}⬆ Mayúsculas: {self.colores['blanco']}{str(stats['mayusculas']):<27} {self.colores['azul']}⬇ Minúsculas: {self.colores['blanco']}{str(stats['minusculas']):<8} ║")
-        print(f"║ {self.colores['amarillo']}✨ Símbolos: {self.colores['blanco']}{str(stats['simbolos']):<30} {self.colores['azul']}🎯 Total: {self.colores['blanco']}{str(stats['longitud']):<12} ║")
-        print(f"{self.colores['morado']}╠═══════════════════════════════════════════════════════════════════════╣")
-        print(f"║ {self.colores['verde']}NIVEL: {stats['color']}{stats['nivel']}{self.colores['reset']}{' ' * (43 - len(stats['nivel']))}║")
-        print(f"║ {self.colores['verde']}BARRA DE SEGURIDAD: [{self.colores['verde']}{bar}{self.colores['reset']}] {stats['porcentaje']:>3}% ║")
-        print(f"{self.colores['morado']}╚═══════════════════════════════════════════════════════════════════════╝{self.colores['reset']}")
+        print(f"\n{self.colores['morado']}│ {self.colores['verde']}███ {self.colores['rosa']}ESTADÍSTICAS DE SEGURIDAD {self.colores['verde']}███{self.colores['reset']}")
+        print(f"{self.colores['morado']}│{self.colores['reset']}")
+        print(f"{self.colores['morado']}│ {self.colores['azul']}Longitud:  {self.colores['blanco']}{stats['longitud']:>3} caracteres")
+        print(f"{self.colores['morado']}│ {self.colores['verde']}Mayúsculas:{self.colores['blanco']}{stats['mayusculas']:>3}")
+        print(f"{self.colores['morado']}│ {self.colores['verde']}Minúsculas:{self.colores['blanco']}{stats['minusculas']:>3}")
+        print(f"{self.colores['morado']}│ {self.colores['azul']}Números:   {self.colores['blanco']}{stats['digitos']:>3}")
+        print(f"{self.colores['morado']}│ {self.colores['amarillo']}Símbolos:  {self.colores['blanco']}{stats['simbolos']:>3}")
+        print(f"{self.colores['morado']}│{self.colores['reset']}")
+        print(f"{self.colores['morado']}│ {self.colores['negrita']}Fortaleza: {stats['color']}{stats['nivel']} ({stats['porcentaje']}%){self.colores['reset']}")
+        print(f"{self.colores['morado']}│ {self.colores['gris']}[{self.colores['verde']}{bar}{self.colores['gris']}] {stats['porcentaje']:>3}%{self.colores['reset']}")
 
     def mostrar_historial(self, archivo="historial.txt"):
-        """Muestra el historial de contraseñas guardadas con estilo cyberpunk"""
+        """Muestra el historial de contraseñas guardadas"""
         if not os.path.exists(archivo):
-            print(f"{self.colores['amarillo']}╔═══════════════════════════════════════════════════════════════════════╗")
-            print(f"║ {self.colores['amarillo']}⚠  NO HAY HISTORIAL DISPONIBLE{self.colores['reset']}{' ' * 32}║")
-            print(f"{self.colores['amarillo']}╚═══════════════════════════════════════════════════════════════════════╝{self.colores['reset']}")
+            print(f"{self.colores['naranja']}│ ⚠ No hay historial disponible{self.colores['reset']}")
             return
         
         try:
             with open(archivo, "r", encoding="utf-8") as f:
                 contenido = f.read()
-                print(f"\n{self.colores['morado']}╔═══════════════════════════════════════════════════════════════════════╗")
-                print(f"║ {self.colores['verde']}█{self.colores['rosa']}█{self.colores['verde']}█ {self.colores['blanco']}HISTORIAL DE CONTRASEÑAS {self.colores['verde']}█{self.colores['rosa']}█{self.colores['verde']}█{self.colores['blanco']}{' ' * 37}║")
-                print(f"{self.colores['morado']}╚═══════════════════════════════════════════════════════════════════════╝")
-                print(f"{self.colores['blanco']}{contenido}{self.colores['reset']}")
+                print(f"\n{self.colores['morado']}│ {self.colores['verde']}█{self.colores['rosa']}█{self.colores['verde']}█ {self.colores['blanco']}HISTORIAL DE CONTRASEÑAS {self.colores['verde']}█{self.colores['rosa']}█{self.colores['verde']}█{self.colores['reset']}")
+                print(f"{self.colores['morado']}│{self.colores['reset']}")
+                print(contenido)
         except Exception as e:
-            print(f"{self.colores['rojo']}╔═══════════════════════════════════════════════════════════════════════╗")
-            print(f"║ {self.colores['rojo']}✗ ERROR AL LEER HISTORIAL: {str(e):<39}║")
-            print(f"{self.colores['rojo']}╚═══════════════════════════════════════════════════════════════════════╝{self.colores['reset']}")
-
-def mostrar_banner():
-    """Muestra un banner cyberpunk"""
-    banner = f"""
-{'\033[38;2;0;255;255m'}╔═══════════════════════════════════════════════════════════════════════╗
-║ {'\033[38;2;255;0;100m'}██████╗ {'\033[38;2;150;0;255m'}██╗   ██╗██████╗ ██╗  ██╗███████╗██████╗ {'\033[38;2;0;255;255m'}║
-║ {'\033[38;2;255;0;100m'}██╔══██╗{'\033[38;2;150;0;255m'}╚██╗ ██╔╝██╔══██╗██║  ██║██╔════╝██╔══██╗{'\033[38;2;0;255;255m'}║
-║ {'\033[38;2;255;0;100m'}██████╔╝{'\033[38;2;150;0;255m'} ╚████╔╝ ██████╔╝███████║█████╗  ██████╔╝{'\033[38;2;0;255;255m'}║
-║ {'\033[38;2;255;0;100m'}██╔═══╝ {'\033[38;2;150;0;255m'}  ╚██╔╝  ██╔═══╝ ██╔══██║██╔══╝  ██╔══██╗{'\033[38;2;0;255;255m'}║
-║ {'\033[38;2;255;0;100m'}██║     {'\033[38;2;150;0;255m'}   ██║   ██║     ██║  ██║███████╗██║  ██║{'\033[38;2;0;255;255m'}║
-║ {'\033[38;2;255;0;100m'}╚═╝     {'\033[38;2;150;0;255m'}   ╚═╝   ╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝{'\033[38;2;0;255;255m'}║
-║        {'\033[38;2;0;255;200m'}★ GENERADOR DE CONTRASEÑAS SEGURAS ★{'\033[38;2;0;255;255m'}        ║
-║  {'\033[38;2;255;165;0m'}⚡ ¡La seguridad en la era digital empieza aquí! ⚡{'\033[38;2;0;255;255m'}  ║
-╚═══════════════════════════════════════════════════════════════════════╝
-{'\033[0m'}"""
-    return banner
+            print(f"{self.colores['rojo']}│ ✗ Error al leer historial: {str(e)}{self.colores['reset']}")
 
 def main():
     """Función principal del programa"""
     generador = GeneradorContrasenasCLI()
     
-    print(generador.colores["fondo"] + mostrar_banner() + generador.colores["reset"])
+    # Banner
+    print(f"""
+{generador.colores['cyan']}╔═══════════════════════════════════════════════════════════════════════╗
+║ {generador.colores['rosa']}██████╗ {generador.colores['morado']}██╗   ██╗██████╗ ██╗  ██╗███████╗██████╗ {generador.colores['cyan']}║
+║ {generador.colores['rosa']}██╔══██╗{generador.colores['morado']}╚██╗ ██╔╝██╔══██╗██║  ██║██╔════╝██╔══██╗{generador.colores['cyan']}║
+║ {generador.colores['rosa']}██████╔╝{generador.colores['morado']} ╚████╔╝ ██████╔╝███████║█████╗  ██████╔╝{generador.colores['cyan']}║
+║ {generador.colores['rosa']}██╔═══╝ {generador.colores['morado']}  ╚██╔╝  ██╔═══╝ ██╔══██║██╔══╝  ██╔══██╗{generador.colores['cyan']}║
+║ {generador.colores['rosa']}██║     {generador.colores['morado']}   ██║   ██║     ██║  ██║███████╗██║  ██║{generador.colores['cyan']}║
+║ {generador.colores['rosa']}╚═╝     {generador.colores['morado']}   ╚═╝   ╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝{generador.colores['cyan']}║
+║        {generador.colores['verde']}★ GENERADOR DE CONTRASEÑAS SEGURAS ★{generador.colores['cyan']}        ║
+║  {generador.colores['amarillo']}⚡ ¡La seguridad en la era digital empieza aquí! ⚡{generador.colores['cyan']}  ║
+╚═══════════════════════════════════════════════════════════════════════╝
+{generador.colores['reset']}""")
     
     while True:
-        print(f"\n{generador.colores['morado']}╔═══════════════════════════════════════════════════════════════════════╗")
-        print(f"║ {generador.colores['verde']}█{generador.colores['rosa']}█{generador.colores['verde']}█ {generador.colores['blanco']}MENÚ PRINCIPAL {generador.colores['verde']}█{generador.colores['rosa']}█{generador.colores['verde']}█{generador.colores['blanco']}{' ' * 42}║")
-        print(f"{generador.colores['morado']}╠═══════════════════════════════════════════════════════════════════════╣")
-        print(f"║ {generador.colores['verde']}[1]{generador.colores['blanco']}  ⚡ Generar nueva contraseña{' ' * 44}║")
-        print(f"║ {generador.colores['amarillo']}[2]{generador.colores['blanco']}  💾 Guardar contraseña en archivo{' ' * 39}║")
-        print(f"║ {generador.colores['azul']}[3]{generador.colores['blanco']}  📜 Ver historial{' ' * 48}║")
-        print(f"║ {generador.colores['rojo']}[4]{generador.colores['blanco']}  🚪 Salir{' ' * 56}║")
-        print(f"{generador.colores['morado']}╚═══════════════════════════════════════════════════════════════════════╝{generador.colores['reset']}")
+        print(f"\n{generador.colores['morado']}│ {generador.colores['verde']}█{generador.colores['rosa']}█{generador.colores['verde']}█ {generador.colores['blanco']}MENÚ PRINCIPAL {generador.colores['verde']}█{generador.colores['rosa']}█{generador.colores['verde']}█{generador.colores['reset']}")
+        print(f"{generador.colores['morado']}│{generador.colores['reset']}")
+        print(f"{generador.colores['morado']}│ {generador.colores['verde']}[1]{generador.colores['blanco']}  ⚡ Generar nueva contraseña")
+        print(f"{generador.colores['morado']}│ {generador.colores['amarillo']}[2]{generador.colores['blanco']}  💾 Guardar contraseña en archivo")
+        print(f"{generador.colores['morado']}│ {generador.colores['azul']}[3]{generador.colores['blanco']}  📜 Ver historial")
+        print(f"{generador.colores['morado']}│ {generador.colores['rojo']}[4]{generador.colores['blanco']}  🚪 Salir")
+        print(f"{generador.colores['morado']}│{generador.colores['reset']}")
         
-        opcion = input(f"\n{generador.colores['rosa']}┌─ {generador.colores['verde']}➤ {generador.colores['blanco']}Selecciona una opción: {generador.colores['reset']}").strip()
+        opcion = input(f"{generador.colores['morado']}│ {generador.colores['verde']}➤ {generador.colores['blanco']}Selecciona una opción: {generador.colores['reset']}").strip()
         
         if opcion == "1":
             try:
-                print(f"{generador.colores['azul']}┌─ {generador.colores['blanco']}Longitud de contraseña [8-20, Enter = 12]{generador.colores['reset']}")
-                longitud = input(f"{generador.colores['rosa']}└─ {generador.colores['verde']}➤ {generador.colores['reset']}") or "12"
+                print(f"{generador.colores['morado']}│ {generador.colores['azul']}Longitud de contraseña [8-20, Enter = 12]{generador.colores['reset']}")
+                longitud = input(f"{generador.colores['morado']}│ {generador.colores['verde']}➤ {generador.colores['reset']}") or "12"
                 longitud = int(longitud)
                 
                 if 8 <= longitud <= 20:
                     contrasena = generador.generar_contrasena(longitud)
                     
-                    print(f"\n{generador.colores['verde']}╔═══════════════════════════════════════════════════════════════════════╗")
-                    print(f"║ {generador.colores['verde']}★ {generador.colores['rosa']}CONTRASEÑA GENERADA {generador.colores['verde']}★{generador.colores['blanco']}{' ' * 41}║")
-                    print(f"║ {generador.colores['blanco']}🔑 {generador.colores['verde']}{contrasena}{' ' * (49 - len(contrasena))}║")
-                    print(f"{generador.colores['verde']}╚═══════════════════════════════════════════════════════════════════════╝{generador.colores['reset']}")
+                    print(f"\n{generador.colores['morado']}│ {generador.colores['verde']}★ {generador.colores['rosa']}CONTRASEÑA GENERADA {generador.colores['verde']}★{generador.colores['reset']}")
+                    print(f"{generador.colores['morado']}│{generador.colores['reset']}")
+                    print(f"{generador.colores['morado']}│ {generador.colores['verde']}🔑 {generador.colores['negrita']}{contrasena}{generador.colores['reset']}")
                     
                     generador.mostrar_estadisticas(contrasena)
                     
                     try:
-                        import subprocess
                         subprocess.run(['xclip', '-selection', 'clipboard'], input=contrasena.encode(), check=True)
-                        print(f"{generador.colores['verde']}╔═══════════════════════════════════════════════════════════════════════╗")
-                        print(f"║ {generador.colores['verde']}✓ COPIADA AL PORTAPAPELES{generador.colores['blanco']}{' ' * 40}║")
-                        print(f"{generador.colores['verde']}╚═══════════════════════════════════════════════════════════════════════╝{generador.colores['reset']}")
+                        print(f"{generador.colores['verde']}│ ✓ Copiada al portapapeles{generador.colores['reset']}")
                     except:
                         pass
                     
-                    guardar = input(f"\n{generador.colores['azul']}┌─ {generador.colores['blanco']}¿Guardar esta contraseña? (s/n): {generador.colores['reset']}").lower()
+                    guardar = input(f"\n{generador.colores['morado']}│ {generador.colores['azul']}¿Guardar esta contraseña? (s/n): {generador.colores['reset']}").lower()
                     if guardar == 's':
-                        nombre = input(f"{generador.colores['azul']}└─ {generador.colores['blanco']}Nombre del archivo: {generador.colores['reset']}").strip()
+                        nombre = input(f"{generador.colores['morado']}│ {generador.colores['azul']}Nombre del archivo: {generador.colores['reset']}").strip()
                         if nombre:
                             generador.guardar_archivo(contrasena, nombre)
                 else:
-                    print(f"{generador.colores['rojo']}╔═══════════════════════════════════════════════════════════════════════╗")
-                    print(f"║ {generador.colores['rojo']}✗ ERROR: La longitud debe estar entre 8 y 20{generador.colores['blanco']}{' ' * 15}║")
-                    print(f"{generador.colores['rojo']}╚═══════════════════════════════════════════════════════════════════════╝{generador.colores['reset']}")
+                    print(f"{generador.colores['rojo']}│ ✗ La longitud debe estar entre 8 y 20{generador.colores['reset']}")
             except ValueError:
-                print(f"{generador.colores['rojo']}╔═══════════════════════════════════════════════════════════════════════╗")
-                print(f"║ {generador.colores['rojo']}✗ ERROR: Ingresa un número válido{generador.colores['blanco']}{' ' * 31}║")
-                print(f"{generador.colores['rojo']}╚═══════════════════════════════════════════════════════════════════════╝{generador.colores['reset']}")
+                print(f"{generador.colores['rojo']}│ ✗ Ingresa un número válido{generador.colores['reset']}")
         
         elif opcion == "2":
-            contrasena = input(f"{generador.colores['azul']}┌─ {generador.colores['blanco']}Ingresa la contraseña a guardar: {generador.colores['reset']}").strip()
+            contrasena = input(f"{generador.colores['morado']}│ {generador.colores['azul']}Ingresa la contraseña a guardar: {generador.colores['reset']}").strip()
             if not contrasena:
-                print(f"{generador.colores['rojo']}╔═══════════════════════════════════════════════════════════════════════╗")
-                print(f"║ {generador.colores['rojo']}✗ ERROR: La contraseña no puede estar vacía{generador.colores['blanco']}{' ' * 23}║")
-                print(f"{generador.colores['rojo']}╚═══════════════════════════════════════════════════════════════════════╝{generador.colores['reset']}")
+                print(f"{generador.colores['rojo']}│ ✗ La contraseña no puede estar vacía{generador.colores['reset']}")
                 continue
             
-            nombre = input(f"{generador.colores['azul']}└─ {generador.colores['blanco']}Nombre del archivo: {generador.colores['reset']}").strip()
+            nombre = input(f"{generador.colores['morado']}│ {generador.colores['azul']}Nombre del archivo: {generador.colores['reset']}").strip()
             if nombre:
                 generador.guardar_archivo(contrasena, nombre)
             else:
-                print(f"{generador.colores['rojo']}╔═══════════════════════════════════════════════════════════════════════╗")
-                print(f"║ {generador.colores['rojo']}✗ ERROR: El nombre no puede estar vacío{generador.colores['blanco']}{' ' * 27}║")
-                print(f"{generador.colores['rojo']}╚═══════════════════════════════════════════════════════════════════════╝{generador.colores['reset']}")
+                print(f"{generador.colores['rojo']}│ ✗ El nombre no puede estar vacío{generador.colores['reset']}")
         
         elif opcion == "3":
             generador.mostrar_historial()
         
         elif opcion == "4":
-            print(f"\n{generador.colores['verde']}╔═══════════════════════════════════════════════════════════════════════╗")
-            print(f"║ {generador.colores['verde']}👋 ¡HASTA LUEGO! {generador.colores['blanco']}Mantén tus contraseñas seguras 🔒{generador.colores['verde']}{' ' * 16}║")
-            print(f"{generador.colores['verde']}╚═══════════════════════════════════════════════════════════════════════╝{generador.colores['reset']}")
+            print(f"\n{generador.colores['verde']}│ 👋 ¡Hasta luego! Mantén tus contraseñas seguras 🔒{generador.colores['reset']}")
             break
         
         else:
-            print(f"{generador.colores['rojo']}╔═══════════════════════════════════════════════════════════════════════╗")
-            print(f"║ {generador.colores['rojo']}✗ OPCIÓN NO VÁLIDA{generador.colores['blanco']}{' ' * 48}║")
-            print(f"{generador.colores['rojo']}╚═══════════════════════════════════════════════════════════════════════╝{generador.colores['reset']}")
+            print(f"{generador.colores['rojo']}│ ✗ Opción no válida{generador.colores['reset']}")
 
 if __name__ == "__main__":
     main()
