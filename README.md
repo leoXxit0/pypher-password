@@ -51,7 +51,7 @@ Son compatibles con el 99% de los sistemas, desde bases de datos hasta comandos 
 
 ---
 
-## 🎨 Capturas de Pantallas
+## Version con Interfaz
 
 ### Interfaz Principal
 ![Interfaz Principal](interfaz_principal.png)
