@@ -15,23 +15,6 @@
 El proyecto fue desarrollado con **Python y Tkinter**, integrando buenas prácticas de seguridad informática y una experiencia de usuario fluida. Incluye **copia automática al portapapeles**, análisis de fortaleza en tiempo real y guardado de contraseñas en archivos `.txt` con formato estructurado.
 
 ---
-
-## 🎯 Características Principales
-
-| Característica | Descripción |
-|:---|:---|
-| ✅ **Longitud ajustable** | De 8 a 20 caracteres (spinbox interactivo) |
-| ✅ **Caracteres seguros** | Solo símbolos compatibles con todos los sistemas |
-| ✅ **Copia automática** | La contraseña se copia al portapapeles al generarla |
-| ✅ **Copia manual** | Botón "Copiar" para re-copiar si es necesario |
-| ✅ **Análisis de fortaleza** | Barra visual y etiqueta (DÉBIL / MEDIA / FUERTE) |
-| ✅ **Estadísticas detalladas** | Muestra Mayúsculas, Minúsculas, Números, Símbolos y Longitud |
-| ✅ **Interfaz oscura 2026** | Diseño moderno con tarjetas y colores neón |
-| ✅ **Guardado en .txt** | Con selector de ubicación y formato estructurado |
-| ✅ **Fecha automática** | Se registra la fecha y hora de creación |
-| ✅ **Validaciones** | No permite guardar sin contraseña o sin nombre |
-
----
 ## 🚀 Instalación y Ejecución
 
 Sigue estos pasos para ejecutar Pypher en tu computadora:
@@ -42,8 +25,6 @@ Sigue estos pasos para ejecutar Pypher en tu computadora:
 git clone https://github.com/leoXxit0/pypher-password.git
 cd pypher-password
 ```
-
----
 ### 🔒 Filtro de Símbolos: Seguridad y Compatibilidad
 Pypher elige cuidadosamente los caracteres especiales para que tu contraseña sea fuerte y funcione en cualquier sistema (bancos, redes sociales, servidores, etc.).
 
@@ -51,7 +32,8 @@ Pypher elige cuidadosamente los caracteres especiales para que tu contraseña se
 Usamos un conjunto de símbolos universalmente aceptados:
 ! @ # $ % & ( ) - _ = + [ ] { } ?
 
-### ¿Por qué? Son compatibles con el 99% de los sistemas, desde bases de datos hasta comandos en terminal.
+### ¿Por qué? 
+Son compatibles con el 99% de los sistemas, desde bases de datos hasta comandos en terminal.
 
 ---
 
