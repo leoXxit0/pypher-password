@@ -25,6 +25,101 @@ class GeneradorContrasenasCLI:
             "blanco": "\033[38;2;220;220;255m",
             "gris": "\033[38;2;150;150;170m"
         }
+        
+        # Obtener la ruta de la carpeta Documentos
+        self.documentos_path = self._obtener_ruta_documentos()
+
+    def _obtener_ruta_documentos(self):
+        """Obtiene la ruta de la carpeta Documentos del usuario"""
+        home = os.path.expanduser("~")
+        
+        # Intentar con nombres comunes en diferentes idiomas
+        posibles_nombres = ["Documentos", "Documents", "My Documents"]
+        
+        for nombre in posibles_nombres:
+            ruta = os.path.join(home, nombre)
+            if os.path.exists(ruta):
+                return ruta
+        
+        # Si no existe ninguna, crear la carpeta en español
+        ruta_es = os.path.join(home, "Documentos")
+        if not os.path.exists(ruta_es):
+            try:
+                os.makedirs(ruta_es)
+                print(f"{self.colores['verde']}│ ✓ Carpeta Documentos creada en: {ruta_es}{self.colores['reset']}")
+            except:
+                # Si falla, usar el directorio actual
+                return "."
+        return ruta_es
+
+    def guardar_archivo(self, contrasena, nombre_archivo, fecha=None, subcarpeta=None):
+        """Guarda la contraseña en un archivo de texto con formato en la carpeta Documentos"""
+        if fecha is None:
+            fecha = datetime.now().strftime("%d/%m/%Y %H:%M")
+        
+        stats = self.analizar_fortaleza(contrasena)
+        
+        contenido = f"""╔═══════════════════════════════════════════════════════════════════════╗
+║                     🐍 PYPHER - REGISTRO DE CONTRASEÑA                      ║
+║                      ───────────────────────────                             ║
+║  Fecha de creación : {fecha:<43} ║
+║  Contraseña        : {contrasena:<43} ║
+║  Longitud          : {str(stats['longitud'])+' caracteres':<43} ║
+║  Mayúsculas        : {str(stats['mayusculas']):<43} ║
+║  Minúsculas        : {str(stats['minusculas']):<43} ║
+║  Números           : {str(stats['digitos']):<43} ║
+║  Símbolos          : {str(stats['simbolos']):<43} ║
+║  Fortaleza         : {stats['nivel'] + ' (' + str(stats['porcentaje']) + '%)':<43} ║
+║  Caracteres usados : Letras + Números + !@#$%&()-_=+[]{{}}?                  ║
+╚═══════════════════════════════════════════════════════════════════════╝
+╔═══════════════════════════════════════════════════════════════════════╗
+║  🔒 Recomendación: Guarda esta contraseña en un lugar seguro.       ║
+╚═══════════════════════════════════════════════════════════════════════╝
+"""
+        
+        if not nombre_archivo.endswith('.txt'):
+            nombre_archivo += '.txt'
+        
+        # Construir la ruta completa
+        if subcarpeta:
+            ruta_carpeta = os.path.join(self.documentos_path, subcarpeta)
+            # Crear subcarpeta si no existe
+            if not os.path.exists(ruta_carpeta):
+                os.makedirs(ruta_carpeta)
+        else:
+            ruta_carpeta = self.documentos_path
+        
+        ruta_completa = os.path.join(ruta_carpeta, nombre_archivo)
+        
+        try:
+            with open(ruta_completa, "w", encoding="utf-8") as archivo:
+                archivo.write(contenido)
+            
+            print(f"{self.colores['verde']}│ ✓ Archivo guardado en: {self.colores['blanco']}{ruta_completa}{self.colores['reset']}")
+            return True
+        except Exception as e:
+            print(f"{self.colores['rojo']}│ ✗ Error al guardar: {str(e)}{self.colores['reset']}")
+            return False
+
+    def mostrar_historial(self, archivo="historial.txt", subcarpeta=None):
+        """Muestra el historial de contraseñas guardadas desde la carpeta Documentos"""
+        if subcarpeta:
+            ruta_archivo = os.path.join(self.documentos_path, subcarpeta, archivo)
+        else:
+            ruta_archivo = os.path.join(self.documentos_path, archivo)
+        
+        if not os.path.exists(ruta_archivo):
+            print(f"{self.colores['naranja']}│ ⚠ No hay historial disponible en: {ruta_archivo}{self.colores['reset']}")
+            return
+        
+        try:
+            with open(ruta_archivo, "r", encoding="utf-8") as f:
+                contenido = f.read()
+                print(f"\n{self.colores['morado']}│ {self.colores['verde']}█{self.colores['rosa']}█{self.colores['verde']}█ {self.colores['blanco']}HISTORIAL DE CONTRASEÑAS {self.colores['verde']}█{self.colores['rosa']}█{self.colores['verde']}█{self.colores['reset']}")
+                print(f"{self.colores['morado']}│{self.colores['reset']}")
+                print(contenido)
+        except Exception as e:
+            print(f"{self.colores['rojo']}│ ✗ Error al leer historial: {str(e)}{self.colores['reset']}")
 
     def generar_contrasena(self, longitud=12):
         """Genera una contraseña aleatoria con la longitud especificada"""
@@ -71,43 +166,6 @@ class GeneradorContrasenasCLI:
             "color": color
         }
 
-    def guardar_archivo(self, contrasena, nombre_archivo, fecha=None):
-        """Guarda la contraseña en un archivo de texto con formato"""
-        if fecha is None:
-            fecha = datetime.now().strftime("%d/%m/%Y %H:%M")
-        
-        stats = self.analizar_fortaleza(contrasena)
-        
-        contenido = f"""╔═══════════════════════════════════════════════════════════════════════╗
-║                     🐍 PYPHER - REGISTRO DE CONTRASEÑA                      ║
-║                      ───────────────────────────                             ║
-║  Fecha de creación : {fecha:<43} ║
-║  Contraseña        : {contrasena:<43} ║
-║  Longitud          : {str(stats['longitud'])+' caracteres':<43} ║
-║  Mayúsculas        : {str(stats['mayusculas']):<43} ║
-║  Minúsculas        : {str(stats['minusculas']):<43} ║
-║  Números           : {str(stats['digitos']):<43} ║
-║  Símbolos          : {str(stats['simbolos']):<43} ║
-║  Fortaleza         : {stats['nivel'] + ' (' + str(stats['porcentaje']) + '%)':<43} ║
-║  Caracteres usados : Letras + Números + !@#$%&()-_=+[]{{}}?                  ║
-╚═══════════════════════════════════════════════════════════════════════╝
-╔═══════════════════════════════════════════════════════════════════════╗
-║  🔒 Recomendación: Guarda esta contraseña en un lugar seguro.       ║
-╚═══════════════════════════════════════════════════════════════════════╝
-"""
-        
-        if not nombre_archivo.endswith('.txt'):
-            nombre_archivo += '.txt'
-        
-        try:
-            with open(nombre_archivo, "w", encoding="utf-8") as archivo:
-                archivo.write(contenido)
-            print(f"{self.colores['verde']}│ ✓ Archivo guardado: {self.colores['blanco']}{nombre_archivo}{self.colores['reset']}")
-            return True
-        except Exception as e:
-            print(f"{self.colores['rojo']}│ ✗ Error al guardar: {str(e)}{self.colores['reset']}")
-            return False
-
     def mostrar_estadisticas(self, contrasena):
         """Muestra estadísticas detalladas de la contraseña"""
         stats = self.analizar_fortaleza(contrasena)
@@ -128,21 +186,6 @@ class GeneradorContrasenasCLI:
         print(f"{self.colores['morado']}│ {self.colores['negrita']}Fortaleza: {stats['color']}{stats['nivel']} ({stats['porcentaje']}%){self.colores['reset']}")
         print(f"{self.colores['morado']}│ {self.colores['gris']}[{self.colores['verde']}{bar}{self.colores['gris']}] {stats['porcentaje']:>3}%{self.colores['reset']}")
 
-    def mostrar_historial(self, archivo="historial.txt"):
-        """Muestra el historial de contraseñas guardadas"""
-        if not os.path.exists(archivo):
-            print(f"{self.colores['naranja']}│ ⚠ No hay historial disponible{self.colores['reset']}")
-            return
-        
-        try:
-            with open(archivo, "r", encoding="utf-8") as f:
-                contenido = f.read()
-                print(f"\n{self.colores['morado']}│ {self.colores['verde']}█{self.colores['rosa']}█{self.colores['verde']}█ {self.colores['blanco']}HISTORIAL DE CONTRASEÑAS {self.colores['verde']}█{self.colores['rosa']}█{self.colores['verde']}█{self.colores['reset']}")
-                print(f"{self.colores['morado']}│{self.colores['reset']}")
-                print(contenido)
-        except Exception as e:
-            print(f"{self.colores['rojo']}│ ✗ Error al leer historial: {str(e)}{self.colores['reset']}")
-
 def main():
     """Función principal del programa"""
     generador = GeneradorContrasenasCLI()
@@ -158,6 +201,7 @@ def main():
 ║ {generador.colores['rosa']}╚═╝     {generador.colores['morado']}   ╚═╝   ╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝{generador.colores['cyan']}║
 ║        {generador.colores['verde']}★ GENERADOR DE CONTRASEÑAS SEGURAS ★{generador.colores['cyan']}        ║
 ║  {generador.colores['amarillo']}⚡ ¡La seguridad en la era digital empieza aquí! ⚡{generador.colores['cyan']}  ║
+║  {generador.colores['azul']}📁 Archivos guardados en: {generador.documentos_path}{generador.colores['cyan']:<22} ║
 ╚═══════════════════════════════════════════════════════════════════════╝
 {generador.colores['reset']}""")
     
@@ -197,7 +241,9 @@ def main():
                     if guardar == 's':
                         nombre = input(f"{generador.colores['morado']}│ {generador.colores['azul']}Nombre del archivo: {generador.colores['reset']}").strip()
                         if nombre:
-                            generador.guardar_archivo(contrasena, nombre)
+                            # Preguntar si quiere una subcarpeta
+                            subcarpeta = input(f"{generador.colores['morado']}│ {generador.colores['azul']}Subcarpeta (opcional, Enter para omitir): {generador.colores['reset']}").strip()
+                            generador.guardar_archivo(contrasena, nombre, subcarpeta=subcarpeta if subcarpeta else None)
                 else:
                     print(f"{generador.colores['rojo']}│ ✗ La longitud debe estar entre 8 y 20{generador.colores['reset']}")
             except ValueError:
@@ -211,12 +257,14 @@ def main():
             
             nombre = input(f"{generador.colores['morado']}│ {generador.colores['azul']}Nombre del archivo: {generador.colores['reset']}").strip()
             if nombre:
-                generador.guardar_archivo(contrasena, nombre)
+                subcarpeta = input(f"{generador.colores['morado']}│ {generador.colores['azul']}Subcarpeta (opcional, Enter para omitir): {generador.colores['reset']}").strip()
+                generador.guardar_archivo(contrasena, nombre, subcarpeta=subcarpeta if subcarpeta else None)
             else:
                 print(f"{generador.colores['rojo']}│ ✗ El nombre no puede estar vacío{generador.colores['reset']}")
         
         elif opcion == "3":
-            generador.mostrar_historial()
+            subcarpeta = input(f"{generador.colores['morado']}│ {generador.colores['azul']}Subcarpeta del historial (opcional, Enter para omitir): {generador.colores['reset']}").strip()
+            generador.mostrar_historial(subcarpeta=subcarpeta if subcarpeta else None)
         
         elif opcion == "4":
             print(f"\n{generador.colores['verde']}│ 👋 ¡Hasta luego! Mantén tus contraseñas seguras 🔒{generador.colores['reset']}")
