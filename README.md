@@ -32,6 +32,16 @@ El proyecto fue desarrollado con **Python y Tkinter**, integrando buenas prácti
 | ✅ **Validaciones** | No permite guardar sin contraseña o sin nombre |
 
 ---
+## 🚀 Instalación y Ejecución
+
+Sigue estos pasos para ejecutar Pypher en tu computadora:
+
+### 1. Clonar el repositorio
+
+git clone https://github.com/leoXxit0/pypher-password.git
+cd pypher-password
+
+---
 
 ## 🔒 Filtro de Símbolos: ¿Por qué estos caracteres y no otros?
 
@@ -87,9 +97,10 @@ Pypher utiliza un **subconjunto cuidadosamente seleccionado** de caracteres espe
 
 ---
 
-## 🚀 Instalación y Uso
+## ⭐ Apoya el Proyecto
 
-### 1. Clonar el repositorio
-```bash
-git clone https://github.com/leoXxit0/pypher.git
-cd pypher
+Si este proyecto te ha sido útil, considera:
+
+- Darle una ⭐ en GitHub
+- Compartirlo con otros desarrolladores
+- Reportar issues o sugerir mejoras
