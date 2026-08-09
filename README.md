@@ -23,6 +23,10 @@ Sigue estos pasos para ejecutar Pypher en tu computadora:
 
 ```bash
 git clone https://github.com/leoXxit0/pypher-password.git
+```
+### 2. Ejecutar
+
+```bash
 cd pypher-password
 ```
 ### Filtro de Símbolos: Seguridad y Compatibilidad
