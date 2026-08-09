@@ -23,7 +23,7 @@ El proyecto fue desarrollado con **Python y Tkinter**, integrando buenas prácti
 | `pypher_linux.py` | **Modo terminal (sin GUI)**. Perfecto para servidores, SSH o sistemas sin entorno gráfico. |
 
 ---
-## 🚀 Instalación y Ejecución
+## 🚀 Instalación y Ejecución (Versión sin Interfaz)
 
 Sigue estos pasos para ejecutar Pypher en tu teminal:
 
@@ -37,6 +37,7 @@ cd pypher-password
 ```bash
 python3 pypher_linux.py
 ```
+### Tutorial 
 ![pypher en linux](tutorial.gif)
 
 ### Filtro de Símbolos: Seguridad y Compatibilidad
@@ -51,7 +52,7 @@ Son compatibles con el 99% de los sistemas, desde bases de datos hasta comandos 
 
 ---
 
-## Version con Interfaz
+## Versión con Interfaz
 
 ### Interfaz Principal
 ![Interfaz Principal](interfaz_principal.png)
