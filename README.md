@@ -38,18 +38,20 @@ Sigue estos pasos para ejecutar Pypher en tu computadora:
 
 ### 1. Clonar el repositorio
 
+```bash
 git clone https://github.com/leoXxit0/pypher-password.git
 cd pypher-password
+```
 
 ---
-# 🔒 Filtro de Símbolos: Seguridad y Compatibilidad
+### 🔒 Filtro de Símbolos: Seguridad y Compatibilidad
 Pypher elige cuidadosamente los caracteres especiales para que tu contraseña sea fuerte y funcione en cualquier sistema (bancos, redes sociales, servidores, etc.).
 
-## ✅ Caracteres Seguros (Los que usamos)
+### ✅ Caracteres Seguros (Los que usamos)
 Usamos un conjunto de símbolos universalmente aceptados:
 ! @ # $ % & ( ) - _ = + [ ] { } ?
 
-## ¿Por qué? Son compatibles con el 99% de los sistemas, desde bases de datos hasta comandos en terminal.
+### ¿Por qué? Son compatibles con el 99% de los sistemas, desde bases de datos hasta comandos en terminal.
 
 ---
 
