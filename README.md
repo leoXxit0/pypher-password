@@ -6,6 +6,7 @@
 ![Status](https://img.shields.io/badge/Status-Completado-brightgreen)
 ![Version](https://img.shields.io/badge/Version-1.0.0-orange)
 
+![Banner](Banner.png)
 ---
 
 ## 📌 Descripción
