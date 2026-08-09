@@ -15,9 +15,17 @@
 El proyecto fue desarrollado con **Python y Tkinter**, integrando buenas prácticas de seguridad informática y una experiencia de usuario fluida. Incluye **copia automática al portapapeles**, análisis de fortaleza en tiempo real y guardado de contraseñas en archivos `.txt` con formato estructurado.
 
 ---
+### 🖥️ Dos formas de usar Pypher
+
+| Versión | Descripción |
+|---------|-------------|
+| `pypher.py` | Interfaz gráfica (GUI) con Tkinter. Ideal para uso diario. |
+| `pypher_linux.py` | **Modo terminal (sin GUI)**. Perfecto para servidores, SSH o sistemas sin entorno gráfico. |
+
+---
 ## 🚀 Instalación y Ejecución
 
-Sigue estos pasos para ejecutar Pypher en tu computadora:
+Sigue estos pasos para ejecutar Pypher en tu teminal:
 
 ### 1. Clonar el repositorio
 
@@ -25,15 +33,11 @@ Sigue estos pasos para ejecutar Pypher en tu computadora:
 git clone https://github.com/leoXxit0/pypher-password.git
 cd pypher-password
 ```
-### 2. Crear y activar un entorno virtual (recomendado)
+### 2. Ejecutar
 ```bash
-python3 -m venv venv
-source venv/bin/activate
+python3 pypher_linux.py
 ```
-### 3. Ejecutar la aplicación
-```bash
-python pypher.py
-```
+![pypher en linux](tutorial.gif)
 
 ### Filtro de Símbolos: Seguridad y Compatibilidad
 Pypher elige cuidadosamente los caracteres especiales para que tu contraseña sea fuerte y funcione en cualquier sistema (bancos, redes sociales, servidores, etc.).
@@ -47,7 +51,7 @@ Son compatibles con el 99% de los sistemas, desde bases de datos hasta comandos 
 
 ---
 
-## 🎨 Capturas de Pantalla
+## 🎨 Capturas de Pantallas
 
 ### Interfaz Principal
 ![Interfaz Principal](interfaz_principal.png)
