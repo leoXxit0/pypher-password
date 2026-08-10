@@ -62,7 +62,7 @@ cd pypher-password
 ```
 ### 4. Ejecutar
 ```bash
-python3 pypher_linux.py
+python3 pypher.py
 ```
 ![Generando Contraseña](generando.png)
 
