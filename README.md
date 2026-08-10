@@ -98,6 +98,10 @@ python3 pypher_linux.py
 ```
 ![Generando Contraseña](generando.png)
 
+Esto abrirá el **Menú Principal**, desde donde puedes acceder al Generador, al Analizador, o ver el placeholder del futuro Generador de Wordlist.
+
+> 💡 Pypher no requiere librerías externas: solo usa la librería estándar de Python (`tkinter`, `random`, `string`, `re`, `datetime`, `os`, `webbrowser`).
+
 ---
 
 ## ⭐ Apoya el Proyecto
