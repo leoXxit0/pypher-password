@@ -11,17 +11,23 @@
 
 ## 📌 Descripción
 
-**Pypher** es un generador de contraseñas seguras con interfaz gráfica moderna y oscura. Diseñado para crear contraseñas robustas de **8 a 20 caracteres** utilizando **caracteres especiales seguros**, compatibles con la mayoría de sistemas (bancos, correos electrónicos, redes sociales, servidores, etc.).
+**Pypher** es una herramienta de escritorio con interfaz gráfica moderna y oscura, pensada para **generar** y **analizar** contraseñas seguras. Nació como un simple generador de contraseñas y evolucionó a una suite unificada que incluye:
 
-El proyecto fue desarrollado con **Python y Tkinter**, integrando buenas prácticas de seguridad informática y una experiencia de usuario fluida. Incluye **copia automática al portapapeles**, análisis de fortaleza en tiempo real y guardado de contraseñas en archivos `.txt` con formato estructurado.
+- 🔐 **Generador de Contraseñas**: crea contraseñas robustas de 8 a 20 caracteres combinando mayúsculas, minúsculas, números y símbolos seguros.
+- 🔍 **Analizador de Contraseñas**: evalúa cualquier contraseña que ingreses (propia o generada por otra herramienta) y te dice qué tan segura es realmente.
+- 📚 **Generador de Wordlist** *(próximamente)*: espacio reservado para una futura herramienta de generación de listas de palabras, pensado como campo abierto para la comunidad.
+
+El proyecto está desarrollado en **Python y Tkinter**, integrando buenas prácticas de seguridad informática y una experiencia de usuario fluida. Incluye copia automática al portapapeles, análisis de fortaleza en tiempo real y guardado de contraseñas en archivos `.txt` con formato estructurado.
+
+> ⚠️ **Nota importante:** por ahora, esta actualización de Pypher solo está disponible en **modo interfaz gráfica (GUI)**. No existe todavía una versión de línea de comandos (CLI).
 
 ---
 ### 🖥️ Dos formas de usar Pypher
 
 | Versión | Descripción |
 |---------|-------------|
-| `pypher.py` | Interfaz gráfica (GUI) con Tkinter. Ideal para uso diario. |
-| `pypher_linux.py` | **Modo terminal (sin GUI)**. Perfecto para servidores, SSH o sistemas sin entorno gráfico. |
+| `pypher.py` | Interfaz gráfica (GUI) con Tkinter. Ideal para uso diario. (Version 1.1) |
+| `pypher_linux.py` | **Modo terminal (sin GUI)**. Perfecto para servidores, SSH o sistemas sin entorno gráfico. (Version 1.0) |
 
 ---
 ## 🚀 Instalación y Ejecución (Versión sin Interfaz)
@@ -42,15 +48,30 @@ python3 pypher_linux.py
 ![pypher en linux](tutorial.gif)
 
 ---
-### Filtro de Símbolos: Seguridad y Compatibilidad
+### 🔒 Filtro de Símbolos: Seguridad y Compatibilidad
+
 Pypher elige cuidadosamente los caracteres especiales para que tu contraseña sea fuerte y funcione en cualquier sistema (bancos, redes sociales, servidores, etc.).
 
-### Caracteres Seguros (Los que usamos)
-Usamos un conjunto de símbolos universalmente aceptados:
-! @ # $ % & ( ) - _ = + [ ] { } ?
+**Caracteres seguros (los que usamos):**
 
-### ¿Por qué? 
-Son compatibles con el 99% de los sistemas, desde bases de datos hasta comandos en terminal.
+```
+! @ # $ % & ( ) - _ = + [ ] { } ?
+```
+
+**¿Por qué?** Son compatibles con el 99% de los sistemas, desde bases de datos hasta comandos en terminal.
+
+---
+## 🧩 Generador de Wordlist (Próximamente)
+
+En el Menú Principal encontrarás un botón **"📚 Generador de Wordlist (Próximamente)"**. Es un espacio reservado intencionalmente para una futura funcionalidad de generación de listas de palabras (wordlists), útil para pruebas de seguridad, auditorías y análisis de contraseñas.
+
+**Este módulo está abierto a colaboraciones.** Si te interesa aportar:
+
+- Puedes proponer la lógica de generación (por reglas, por diccionario, combinatoria, etc.)
+- Puedes sugerir opciones de personalización (longitud, patrones, mutaciones tipo leetspeak, fechas, etc.)
+- Puedes abrir un *issue* o un *pull request* con tu propuesta
+
+Cualquier contribución, por pequeña que sea, es bienvenida. 🙌
 
 ---
 
