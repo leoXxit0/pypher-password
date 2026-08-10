@@ -30,24 +30,6 @@ El proyecto está desarrollado en **Python y Tkinter**, integrando buenas práct
 | `pypher_linux.py` | **Modo terminal (sin GUI)**. Perfecto para servidores, SSH o sistemas sin entorno gráfico. (Version 1.0) |
 
 ---
-## 🚀 Instalación y Ejecución (Versión sin Interfaz)
-
-Sigue estos pasos para ejecutar Pypher en tu teminal:
-
-### 1. Clonar el repositorio
-
-```bash
-git clone https://github.com/leoXxit0/pypher-password.git
-cd pypher-password
-```
-### 2. Ejecutar
-```bash
-python3 pypher_linux.py
-```
-### Tutorial 
-![pypher en linux](tutorial.gif)
-
----
 ### 🔒 Filtro de Símbolos: Seguridad y Compatibilidad
 
 Pypher elige cuidadosamente los caracteres especiales para que tu contraseña sea fuerte y funcione en cualquier sistema (bancos, redes sociales, servidores, etc.).
@@ -61,20 +43,6 @@ Pypher elige cuidadosamente los caracteres especiales para que tu contraseña se
 **¿Por qué?** Son compatibles con el 99% de los sistemas, desde bases de datos hasta comandos en terminal.
 
 ---
-## 🧩 Generador de Wordlist (Próximamente)
-
-En el Menú Principal encontrarás un botón **"📚 Generador de Wordlist (Próximamente)"**. Es un espacio reservado intencionalmente para una futura funcionalidad de generación de listas de palabras (wordlists), útil para pruebas de seguridad, auditorías y análisis de contraseñas.
-
-**Este módulo está abierto a colaboraciones.** Si te interesa aportar:
-
-- Puedes proponer la lógica de generación (por reglas, por diccionario, combinatoria, etc.)
-- Puedes sugerir opciones de personalización (longitud, patrones, mutaciones tipo leetspeak, fechas, etc.)
-- Puedes abrir un *issue* o un *pull request* con tu propuesta
-
-Cualquier contribución, por pequeña que sea, es bienvenida. 🙌
-
----
-
 ## 🚀 Instalación y Ejecución (Versión con Interfaz)
 
 ### 1. Instalar Tkinter (interfaz gráfica)
@@ -101,6 +69,37 @@ python3 pypher_linux.py
 Esto abrirá el **Menú Principal**, desde donde puedes acceder al Generador, al Analizador, o ver el placeholder del futuro Generador de Wordlist.
 
 > 💡 Pypher no requiere librerías externas: solo usa la librería estándar de Python (`tkinter`, `random`, `string`, `re`, `datetime`, `os`, `webbrowser`).
+
+---
+## 🧩 Generador de Wordlist (Próximamente)
+
+En el Menú Principal encontrarás un botón **"📚 Generador de Wordlist (Próximamente)"**. Es un espacio reservado intencionalmente para una futura funcionalidad de generación de listas de palabras (wordlists), útil para pruebas de seguridad, auditorías y análisis de contraseñas.
+
+**Este módulo está abierto a colaboraciones.** Si te interesa aportar:
+
+- Puedes proponer la lógica de generación (por reglas, por diccionario, combinatoria, etc.)
+- Puedes sugerir opciones de personalización (longitud, patrones, mutaciones tipo leetspeak, fechas, etc.)
+- Puedes abrir un *issue* o un *pull request* con tu propuesta
+
+Cualquier contribución, por pequeña que sea, es bienvenida. 🙌
+
+---
+## 🚀 Instalación y Ejecución (Versión sin Interfaz)
+
+Sigue estos pasos para ejecutar Pypher en tu teminal:
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/leoXxit0/pypher-password.git
+cd pypher-password
+```
+### 2. Ejecutar
+```bash
+python3 pypher_linux.py
+```
+### Tutorial 
+![pypher en linux](tutorial.gif)
 
 ---
 
