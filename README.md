@@ -1,4 +1,8 @@
-# 🐍 Pypher - Generador y Analizador de Contraseñas Seguras (Wordlist Generator)
+# 🐍 Pypher
+
+> **Generador y Analizador de Contraseñas CLI** — Suite de seguridad profesional para terminal
+
+Pypher es una herramienta de línea de comandos diseñada para cubrir todo el ciclo de vida de la gestión de contraseñas: generación segura, análisis de fortaleza, estadísticas avanzadas, wordlists personalizadas y almacenamiento local.
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![Tkinter](https://img.shields.io/badge/Tkinter-GUI-green)
@@ -9,17 +13,16 @@
 ![Banner](Banner.png)
 ---
 
-## 📌 Descripción
+## 🚀 Características
 
-**Pypher** es una herramienta de escritorio con interfaz gráfica moderna y oscura, pensada para **generar** y **analizar** contraseñas seguras. Nació como un simple generador de contraseñas y evolucionó a una suite unificada que incluye:
-
-- 🔐 **Generador de Contraseñas**: crea contraseñas robustas de 8 a 20 caracteres combinando mayúsculas, minúsculas, números y símbolos seguros.
-- 🔍 **Analizador de Contraseñas**: evalúa cualquier contraseña que ingreses (propia o generada por otra herramienta) y te dice qué tan segura es realmente.
-- 📚 **Generador de Wordlist** *(próximamente)*: espacio reservado para una futura herramienta de generación de listas de palabras, pensado como campo abierto para la comunidad.
-
-El proyecto está desarrollado en **Python y Tkinter**, integrando buenas prácticas de seguridad informática y una experiencia de usuario fluida. Incluye copia automática al portapapeles, análisis de fortaleza en tiempo real y guardado de contraseñas en archivos `.txt` con formato estructurado.
-
-> ⚠️ **Nota importante:** por ahora, esta actualización de Pypher solo está disponible en **modo interfaz gráfica (GUI)**. No existe todavía una versión de línea de comandos (CLI).
+| Módulo | Descripción |
+|--------|-------------|
+| **⚡ Generador** | Crea contraseñas de 8 a 20 caracteres con 77 caracteres posibles (mayúsculas, minúsculas, números y símbolos) |
+| **🔍 Analizador** | Evalúa la fortaleza con 8 criterios rigurosos (0–8 puntos) y niveles FUERTE / MEDIA / DÉBIL |
+| **📊 Estadísticas Avanzadas** | Entropía en bits, tiempos de crackeo estimados (MD5/SHA256/bcrypt en GPU/CPU), detección de patrones y verificación en leaks |
+| **📚 Wordlists** | Genera diccionarios personalizados con límite de seguridad de **50,000 variantes**, incluye fuerza bruta, mutaciones y combinaciones |
+| **💾 Persistencia** | Guarda contraseñas y análisis en `~/pypher/` con soporte para subcarpetas y compresión `.gz` |
+| **📋 Portapapeles** | Copia automática al portapapeles (soporte `pyperclip`, `xclip` y `wl-clipboard`) |
 
 ---
 ### 🔒 Filtro de Símbolos: Seguridad y Compatibilidad
