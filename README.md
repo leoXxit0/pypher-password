@@ -1,4 +1,4 @@
-# 🐍 Pypher - Generador y Analizador de Contraseñas Seguras
+# 🐍 Pypher - Generador y Analizador de Contraseñas Seguras (Wordlist Generator)
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![Tkinter](https://img.shields.io/badge/Tkinter-GUI-green)
