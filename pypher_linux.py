@@ -922,31 +922,44 @@ class AdvancedAnalyzer:
     # -----------------------------------------------------------------
     # === Flujo interactivo (menú) ===
     # -----------------------------------------------------------------
-    def analizar_avanzado_interactivo(self):
-        print(f"\n{self.colores['morado']}│ {self.colores['verde']}█{self.colores['rosa']}█{self.colores['verde']}█ {self.colores['blanco']}ESTADÍSTICAS AVANZADAS {self.colores['verde']}█{self.colores['rosa']}█{self.colores['verde']}█{self.colores['reset']}")
-        print(f"{self.colores['morado']}│{self.colores['reset']}")
-        print(f"{self.colores['morado']}│ {self.colores['verde']}[1]{self.colores['blanco']}  Analizar una contraseña")
-        print(f"{self.colores['morado']}│ {self.colores['cyan']}[2]{self.colores['blanco']}  Analizar un archivo de wordlist")
+   def analizar_avanzado_interactivo(self):
+    print(f"\n{self.colores['morado']}│ {self.colores['verde']}█{self.colores['rosa']}█{self.colores['verde']}█ {self.colores['blanco']}ESTADÍSTICAS AVANZADAS {self.colores['verde']}█{self.colores['rosa']}█{self.colores['verde']}█{self.colores['reset']}")
+    print(f"{self.colores['morado']}│{self.colores['reset']}")
+    print(f"{self.colores['morado']}│ {self.colores['verde']}[1]{self.colores['blanco']}  Analizar una contraseña")
+    print(f"{self.colores['morado']}│ {self.colores['cyan']}[2]{self.colores['blanco']}  Analizar un archivo de wordlist")
 
-        modo = input(f"{self.colores['morado']}│ {self.colores['verde']}➤ {self.colores['reset']}").strip()
+    modo = input(f"{self.colores['morado']}│ {self.colores['verde']}➤ {self.colores['reset']}").strip()
 
-        if modo == "1":
-            contrasena = getpass.getpass(f"{self.colores['morado']}│ {self.colores['azul']}Contraseña a analizar (oculta): {self.colores['reset']}")
-            if not contrasena:
-                print(f"{self.colores['rojo']}│ ✗ Ingresa una contraseña para analizar{self.colores['reset']}")
-                return
-            self.mostrar_estadisticas_avanzadas(contrasena)
+    if modo == "1":
+        contrasena = getpass.getpass(f"{self.colores['morado']}│ {self.colores['azul']}Contraseña a analizar (oculta): {self.colores['reset']}")
+        if not contrasena:
+            print(f"{self.colores['rojo']}│ ✗ Ingresa una contraseña para analizar{self.colores['reset']}")
+            return
+        
+        # Mostrar estadísticas
+        stats = self.mostrar_estadisticas_avanzadas(contrasena)
+        
+        # ======== NUEVA PARTE: OPCIÓN DE GUARDAR ========
+        guardar = input(f"\n{self.colores['morado']}│ {self.colores['azul']}¿Guardar este análisis en un archivo? (s/n): {self.colores['reset']}").strip().lower()
+        if guardar == 's':
+            nombre = input(f"{self.colores['morado']}│ {self.colores['azul']}Nombre del archivo: {self.colores['reset']}").strip()
+            if nombre:
+                subcarpeta = input(f"{self.colores['morado']}│ {self.colores['azul']}Subcarpeta (opcional, Enter para omitir): {self.colores['reset']}").strip()
+                self.guardar_analisis_avanzado(contrasena, stats, nombre, subcarpeta=subcarpeta if subcarpeta else None)
+            else:
+                print(f"{self.colores['rojo']}│ ✗ El nombre no puede estar vacío{self.colores['reset']}")
 
-        elif modo == "2":
-            ruta = input(f"{self.colores['morado']}│ {self.colores['azul']}Ruta del archivo (relativa a ~/pypher o absoluta): {self.colores['reset']}").strip()
-            if not ruta:
-                print(f"{self.colores['rojo']}│ ✗ Debes indicar una ruta{self.colores['reset']}")
-                return
-            if not os.path.isabs(ruta):
-                ruta = os.path.join(self.documentos_path, ruta)
-            self.analizar_wordlist_archivo(ruta)
+    elif modo == "2":
+        ruta = input(f"{self.colores['morado']}│ {self.colores['azul']}Ruta del archivo (relativa a ~/pypher o absoluta): {self.colores['reset']}").strip()
+        if not ruta:
+            print(f"{self.colores['rojo']}│ ✗ Debes indicar una ruta{self.colores['reset']}")
+            return
+        if not os.path.isabs(ruta):
+            ruta = os.path.join(self.documentos_path, ruta)
+        self.analizar_wordlist_archivo(ruta)
 
-        else:
+    else:
+        print(f"{self.colores['rojo']}│ ✗ Opción no válida{self.colores['reset']}")
             print(f"{self.colores['rojo']}│ ✗ Opción no válida{self.colores['reset']}")
 
 
