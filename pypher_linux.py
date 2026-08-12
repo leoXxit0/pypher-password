@@ -16,7 +16,7 @@ import gzip
 # variantes por ejecución, sin importar el modo usado, para evitar un
 # consumo excesivo de RAM/disco.
 # =====================================================================
-MAX_VARIANTES = 250
+MAX_VARIANTES = 50000 # 50 mil variantes
 
 # =====================================================================
 # === Patrones comunes a evitar (usado solo como advertencia informativa) ===
