@@ -161,7 +161,6 @@ class GeneradorContrasenasCLI:
             print(f"{self.colores['verde']}│ ✓ Carpeta Pypher creada en: {ruta_pypher}{self.colores['reset']}")
         return ruta_pypher
     except Exception as e:
-        # Fallback a directorio actual si no se puede crear
         print(f"{self.colores['naranja']}│ ⚠ No se pudo crear la carpeta Pypher: {e}{self.colores['reset']}")
         print(f"{self.colores['naranja']}│ Usando directorio actual como alternativa{self.colores['reset']}")
         return "."
