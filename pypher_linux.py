@@ -151,16 +151,20 @@ class GeneradorContrasenasCLI:
         self.documentos_path = self._obtener_ruta_documentos()
 
     def _obtener_ruta_documentos(self):
-        """Obtiene la ruta de la carpeta Documentos del usuario"""
-        home = os.path.expanduser("~")
-
-        # Intentar con nombres comunes en diferentes idiomas
-        posibles_nombres = ["Documentos", "Documents", "My Documents"]
-
-        for nombre in posibles_nombres:
-            ruta = os.path.join(home, nombre)
-            if os.path.exists(ruta):
-                return ruta
+    """Obtiene una ruta universal para guardar archivos en cualquier dispositivo"""
+    home = os.path.expanduser("~")
+    ruta_pypher = os.path.join(home, "Pypher")
+    
+    try:
+        if not os.path.exists(ruta_pypher):
+            os.makedirs(ruta_pypher)
+            print(f"{self.colores['verde']}│ ✓ Carpeta Pypher creada en: {ruta_pypher}{self.colores['reset']}")
+        return ruta_pypher
+    except Exception as e:
+        # Fallback a directorio actual si no se puede crear
+        print(f"{self.colores['naranja']}│ ⚠ No se pudo crear la carpeta Pypher: {e}{self.colores['reset']}")
+        print(f"{self.colores['naranja']}│ Usando directorio actual como alternativa{self.colores['reset']}")
+        return "."
 
         # Si no existe ninguna, crear la carpeta en español
         ruta_es = os.path.join(home, "Documentos")
