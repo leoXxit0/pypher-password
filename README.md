@@ -47,7 +47,11 @@ Sigue estos pasos para ejecutar Pypher en tu teminal:
 git clone https://github.com/leoXxit0/pypher-password.git
 cd pypher-password
 ```
-### 2. Ejecutar
+### 2. Instalar pyperclip (portapapeles OPCIONAL)
+```bash
+pip3 install pyperclip
+```
+### 3. Ejecutar
 ```bash
 python3 pypher_linux.py
 ```
