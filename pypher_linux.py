@@ -960,7 +960,6 @@ class AdvancedAnalyzer:
 
     else:
         print(f"{self.colores['rojo']}│ ✗ Opción no válida{self.colores['reset']}")
-            print(f"{self.colores['rojo']}│ ✗ Opción no válida{self.colores['reset']}")
 
 
 def mostrar_info_autor(colores):
