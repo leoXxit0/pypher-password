@@ -1652,7 +1652,7 @@ def mostrar_info_proyecto(colores: dict) -> None:
     print(f"{c['morado']}╚{'═' * 60}╝{c['reset']}")
     print(f"\n{c['morado']}│ {c['verde']}Proyecto: {c['blanco']}Pypher — Generador y Analizador de Contraseñas{c['reset']}")
     print(f"{c['morado']}│ {c['azul']}Versión: {c['blanco']}{__version__}{c['reset']}")
-    print(f"{c['morado']}│ {c['cyan']}Repositorio: {c['blanco']}https://github.com/tu-usuario/pypher{c['reset']}")
+    print(f"{c['morado']}│ {c['cyan']}Repositorio: {c['blanco']}https://github.com/leoXxit0/pypher-password{c['reset']}")
     print(f"{c['morado']}│ {c['amarillo']}Licencia: {c['blanco']}GNU GPLv3{c['reset']}")
     print(f"{c['morado']}│{c['reset']}")
     print(f"{c['morado']}│ {c['gris']}Pypher es software libre: puedes usarlo, estudiarlo, modificarlo{c['reset']}")
