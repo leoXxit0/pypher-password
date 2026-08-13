@@ -61,9 +61,10 @@ pip3 install pyperclip
 ```bash
 python3 pypher_linux.py
 ```
-### 4. Ejecutar
+### 4. Crear Acceso Directo
 ```bash
-python3 pypher_linux.py
+echo 'alias pypher="python3 ~/Descargas/pypher_linux.py"' >> ~/.bashrc
+source ~/.bashrc
 ```
 ### Tutorial 
 ![pypher en linux](tutorial.gif)
@@ -87,10 +88,9 @@ pip3 install pyperclip
 git clone https://github.com/leoXxit0/pypher-password.git
 cd pypher-password
 ```
-### 4. Crear Acceso Directo
+### 4. Ejecutar
 ```bash
-echo 'alias pypher="python3 ~/Descargas/pypher_linux.py"' >> ~/.bashrc
-source ~/.bashrc
+python3 pypher.py
 ```
 ![Generando Contraseña](generando.png)
 
