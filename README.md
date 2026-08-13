@@ -37,6 +37,9 @@ Pypher elige cuidadosamente los caracteres especiales para que tu contraseña se
 
 **¿Por qué?** Son compatibles con el 99% de los sistemas, desde bases de datos hasta comandos en terminal.
 
+# Sobre el Generador de WordList
+El programa tiene un diccionario interno con más de 100 palabras comunes que la gente suele usar en contraseñas (admin, password, qwerty, love, dragon, etc.). Esto hace que las wordlists sean mucho más realistas y útiles.
+
 ---
 ## 🚀 Instalación y Ejecución (Versión CLI)
 
