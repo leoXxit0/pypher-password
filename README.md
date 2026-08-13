@@ -1,5 +1,11 @@
 # 🐍 Pypher — Generador y Analizador de Contraseñas
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.6%2B-blue" alt="Python Version">
+  <img src="https://img.shields.io/badge/License-GPLv3-green" alt="License: GPL v3">
+  <img src="https://img.shields.io/badge/Platform-Linux%20%7C%20macOS%20%7C%20WSL-lightgrey" alt="Platform">
+</p>
+
 Herramienta de línea de comandos, con estética *Cyberpunk*, para generar
 contraseñas seguras, analizar su fortaleza (con estadísticas avanzadas:
 entropía, tiempo estimado de crackeo, patrones inseguros) y generar
