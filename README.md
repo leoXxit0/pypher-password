@@ -32,8 +32,8 @@ Licencia: **GNU GPLv3**. Ver [LICENSE](LICENSE.txt).
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/pypher.git
-cd pypher
+git clone https://github.com/leoXxit0/pypher-password.git
+cd pypher-password
 ```
 
 ### 2. Crear un acceso directo (`pypher`)
@@ -55,34 +55,11 @@ instrucciones.
 Funciona igual sin importar el shell que uses:
 
 ```bash
-sudo ln -s "$(pwd)/pypher_linux.py" /usr/local/bin/pypher
+sudo ln -s "$(pwd)/pypher_linux.py" /usr/local/bin/pypher-password
 chmod +x pypher_linux.py
 ```
 
 A partir de ahí, `pypher` queda disponible como comando en todo el sistema.
-
-#### Opción C — Alias manual, según tu shell
-
-**Bash**
-
-```bash
-echo "alias pypher=\"python3 $(pwd)/pypher_linux.py\"" >> ~/.bashrc
-source ~/.bashrc
-```
-
-**Zsh**
-
-```bash
-echo "alias pypher=\"python3 $(pwd)/pypher_linux.py\"" >> ~/.zshrc
-source ~/.zshrc
-```
-
-**Fish**
-
-```fish
-echo "alias pypher \"python3 $(pwd)/pypher_linux.py\"" >> ~/.config/fish/config.fish
-source ~/.config/fish/config.fish
-```
 
 > 💡 La ruta se calcula con `$(pwd)`, así que funciona sin importar en
 > qué carpeta hayas descargado el proyecto.
