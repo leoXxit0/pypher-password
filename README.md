@@ -10,7 +10,9 @@ Pypher es una herramienta de línea de comandos diseñada para cubrir todo el ci
 ![Status](https://img.shields.io/badge/Status-Completado-brightgreen)
 ![Version](https://img.shields.io/badge/Version-1.0.0-orange)
 
-![Banner](banner.png)
+![Banner](assets/banner.png)
+
+
 ---
 
 ## 🚀 Características
@@ -25,27 +27,28 @@ Pypher es una herramienta de línea de comandos diseñada para cubrir todo el ci
 | **📋 Portapapeles** | Copia automática al portapapeles (soporte `pyperclip`, `xclip` y `wl-clipboard`) |
 
 ---
+
 ### 🔒 Filtro de Símbolos: Seguridad y Compatibilidad
 
 Pypher elige cuidadosamente los caracteres especiales para que tu contraseña sea fuerte y funcione en cualquier sistema (bancos, redes sociales, servidores, etc.).
 
 **Caracteres seguros (los que usamos):**
 
-```
-! @ # $ % & ( ) - _ = + [ ] { } ?
-```
-
 **¿Por qué?** Son compatibles con el 99% de los sistemas, desde bases de datos hasta comandos en terminal.
 
-# Sobre el Generador de WordList
+---
+
+### 📚 Sobre el Generador de WordList
+
 El programa tiene un diccionario interno con más de 100 palabras comunes que la gente suele usar en contraseñas (admin, password, qwerty, love, dragon, etc.). Esto hace que las wordlists sean mucho más realistas y útiles.
 
 ---
+
 ## 🚀 Instalación y Ejecución (Versión CLI)
 
 Sigue estos pasos para ejecutar Pypher en tu teminal:
 
-![pypher en linux](terminal.png)
+![pypher en linux](assets/terminal.png)
 
 ### 1. Clonar el repositorio
 
@@ -67,7 +70,7 @@ echo 'alias pypher="python3 ~/Descargas/pypher_linux.py"' >> ~/.bashrc
 source ~/.bashrc
 ```
 ### Tutorial 
-![pypher en linux](tutorial.gif)
+![pypher en linux](assets/tutorial.gif)
 
 ---
 
@@ -92,7 +95,7 @@ cd pypher-password
 ```bash
 python3 pypher.py
 ```
-![Generando Contraseña](generando.png)
+![Generando Contraseña](assets/generando.png)
 
 Esto abrirá el **Menú Principal**, desde donde puedes acceder al Generador, al Analizador, o ver el placeholder del futuro Generador de Wordlist.
 
