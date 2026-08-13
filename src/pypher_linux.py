@@ -178,7 +178,7 @@ def pegar_portapapeles():
 # variantes por ejecución, sin importar el modo usado, para evitar un
 # consumo excesivo de RAM/disco.
 # =====================================================================
-MAX_VARIANTES = 50000 # 50 mil variantes
+MAX_VARIANTES = 150000 # 150 mil variantes
 
 # =====================================================================
 # === Patrones comunes a evitar (usado solo como advertencia informativa) ===
