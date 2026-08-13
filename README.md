@@ -131,4 +131,7 @@ del repositorio.
 ## 📄 Licencia
 
 Este proyecto está licenciado bajo la **GNU General Public License v3.0**.
+
+>Cualquiera puede usar, modificar y compartir Pypher. Pero si alguien lo mejora y lo distribuye, debe compartir sus mejoras bajo la misma licencia. Nadie puede convertirlo en un producto privado y cerrado.
+
 Consulta el archivo [LICENSE](LICENSE.txt) para más detalles.
