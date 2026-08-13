@@ -90,7 +90,7 @@ pypher -h              # Ver la ayuda completa
 Pypher guarda tus preferencias en:
 
 ```
-~/.config/pypher/config.json
+~/.config/pypher-password/config.json
 ```
 
 Este archivo se crea automáticamente en la primera ejecución.
