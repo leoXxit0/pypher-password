@@ -125,7 +125,7 @@ proponer mejoras, o envía un *Pull Request* directamente.
 
 ## 🐛 Reportar bugs
 
-Usa la sección de [Issues](https://github.com/tu-usuario/pypher-password/issues)
+Usa la sección de [Issues](https://github.com/leoXxit0/pypher-password/issues)
 del repositorio.
 
 ## 📄 Licencia
