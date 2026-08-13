@@ -695,6 +695,36 @@ class WordlistGenerator:
     'frances', 'kathryn',
     ]
 
+  # Palabras clave muy comunes en español e internacionalmente
+NUEVAS_PALABRAS = [
+    'hola', 'teamo', 'amigos', 'familia', 'contraseña', 'sistemas',
+    'invitado', 'soporte', 'prueba', 'temporal', 'santiago', 'carlos',
+    'alejandro', 'maria', 'juan', 'pepito', '1234567890ñ'
+]
+
+# Cultura pop, deportes y marcas (muy utilizadas)
+CULTURA_POP = [
+    'starwars', 'pokemon', 'batman', 'superman', 'naruto', 'matrix',
+    'harrypotter', 'gandalf', 'marvel', 'avengers', 'metallica', 
+    'barcelona', 'realmadrid', 'lakers', 'yankees', 'chelsea', 'america'
+]
+
+# Patrones de teclado avanzados (diagonales y zig-zag)
+TECLADO_AVANZADO = [
+    'qazwsx', 'wsxedc', 'edcrfv', 'tgbvhu', 'yhnmju', 'ujmiko',
+    '1qaz2wsx', '1qaz', '1qazxsw2', 'qweasdzxc', 'zxcvbnm', 'mnbvcxz',
+    'poiuytrewq', 'lkjhgfdsa'
+]
+
+# Nombres de mascotas comunes
+MASCOTAS = [
+    'luna', 'bella', 'max', 'charlie', 'lucy', 'cooper', 'daisy', 
+    'rocky', 'toby', 'lola', 'simba', 'nala'
+]
+
+# Actualización de tu diccionario base
+DICCIONARIO_BASE.extend(NUEVAS_PALABRAS + CULTURA_POP + TECLADO_AVANZADO + MASCOTAS)
+
     def __init__(self, colores: dict, documentos_path: str) -> None:
         """Args:
             colores: Paleta de colores ANSI compartida con el resto del programa.
