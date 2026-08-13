@@ -5,7 +5,7 @@ contraseñas seguras, analizar su fortaleza (con estadísticas avanzadas:
 entropía, tiempo estimado de crackeo, patrones inseguros) y generar
 wordlists con fines educativos y de auditoría de seguridad.
 
-Licencia: **GNU GPLv3**. Ver [LICENSE.txt](LICENSE).
+Licencia: **GNU GPLv3**. Ver [LICENSE](LICENSE.txt).
 
 ## ✨ Características
 
