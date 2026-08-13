@@ -95,7 +95,7 @@ cd pypher-password
 ```bash
 python3 pypher.py
 ```
-![Generando Contraseña](assets/generando.png)
+![Generando Contraseña](assets/Generando.png)
 
 Esto abrirá el **Menú Principal**, desde donde puedes acceder al Generador, al Analizador, o ver el placeholder del futuro Generador de Wordlist.
 
