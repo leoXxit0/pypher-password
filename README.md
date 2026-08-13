@@ -43,6 +43,7 @@ Tienes tres formas de hacerlo, elige la que prefieras:
 #### Opción A — Instalador interactivo (recomendado)
 
 ```bash
+chmod +x install.sh
 ./install.sh
 ```
 
