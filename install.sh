@@ -16,15 +16,16 @@ AMARILLO='\033[1;33m'
 ROJO='\033[0;31m'
 RESET='\033[0m'
 
-# --- Comprobar que pypher_linux.py existe en el directorio actual ------
-if [ ! -f "$(pwd)/pypher_linux.py" ]; then
-    echo -e "${ROJO}✗ No se encontró 'pypher_linux.py' en el directorio actual.${RESET}"
+# --- Comprobar que pypher_linux.py existe en src/ ------
+RUTA_SCRIPT="$(pwd)/src/pypher_linux.py"
+
+if [ ! -f "$RUTA_SCRIPT" ]; then
+    echo -e "${ROJO}✗ No se encontró 'src/pypher_linux.py' en el directorio actual.${RESET}"
     echo -e "${AMARILLO}  Ejecuta este script desde la raíz del proyecto Pypher.${RESET}"
-    echo -e "${AMARILLO}  Nota: La carpeta del repositorio se llama 'pypher-password'${RESET}"
+    echo -e "${AMARILLO}  La estructura debe ser: ./src/pypher_linux.py${RESET}"
     exit 1
 fi
 
-RUTA_SCRIPT="$(pwd)/pypher_linux.py"
 chmod +x "$RUTA_SCRIPT" 2>/dev/null || true
 
 echo -e "${CYAN}╔═══════════════════════════════════════════════════════════╗${RESET}"
@@ -79,7 +80,6 @@ case "$OPCION" in
                 echo -e "${AMARILLO}⚠ No se pudo detectar automáticamente tu shell (${SHELL_NOMBRE:-desconocido}).${RESET}"
                 echo -e "${CYAN}  Añade manualmente esta línea a la configuración de tu shell:${RESET}"
                 echo -e "  alias pypher=\"python3 $RUTA_SCRIPT\""
-                echo -e "${CYAN}  Nota: La carpeta del proyecto se llama 'pypher-password'${RESET}"
                 ;;
         esac
         ;;
@@ -87,7 +87,6 @@ case "$OPCION" in
         echo -e "${CYAN}Se creará un enlace simbólico en /usr/local/bin/pypher (requiere sudo):${RESET}"
         if sudo ln -sf "$RUTA_SCRIPT" /usr/local/bin/pypher; then
             echo -e "${VERDE}✓ Comando global creado: pypher${RESET}"
-            echo -e "${CYAN}  Nota: La carpeta del proyecto se llama 'pypher-password'${RESET}"
         else
             echo -e "${ROJO}✗ No se pudo crear el enlace simbólico.${RESET}"
             exit 1
@@ -95,7 +94,6 @@ case "$OPCION" in
         ;;
     3)
         echo ""
-        echo -e "${CYAN}─────────────────────────────────────────────${RESET}"
         echo -e "${CYAN}Bash/Zsh:${RESET}"
         echo "  echo 'alias pypher=\"python3 $RUTA_SCRIPT\"' >> ~/.bashrc && source ~/.bashrc"
         echo ""
@@ -104,17 +102,12 @@ case "$OPCION" in
         echo ""
         echo -e "${CYAN}Comando global (cualquier shell):${RESET}"
         echo "  sudo ln -s $RUTA_SCRIPT /usr/local/bin/pypher"
-        echo ""
-        echo -e "${CYAN}─────────────────────────────────────────────${RESET}"
-        echo -e "${AMARILLO}📁 Nota: La carpeta del proyecto se llama 'pypher-password'${RESET}"
-        echo -e "${CYAN}   Asegúrate de estar en ese directorio al ejecutar los comandos.${RESET}"
         ;;
     *)
-        echo -e "${ROJO}✗ Opción no válida.${RESULT}"
+        echo -e "${ROJO}✗ Opción no válida.${RESET}"
         exit 1
         ;;
 esac
 
 echo ""
 echo -e "${VERDE}🎉 Listo. Escribe 'pypher' para ejecutar el programa.${RESET}"
-echo -e "${CYAN}📁 Recuerda que estás en el directorio: $(pwd)${RESET}"
