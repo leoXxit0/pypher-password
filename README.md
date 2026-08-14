@@ -11,7 +11,7 @@ contraseñas seguras, analizar su fortaleza (con estadísticas avanzadas:
 entropía, tiempo estimado de crackeo, patrones inseguros) y generar
 wordlists con fines educativos y de auditoría de seguridad.
 
-Licencia: **GNU GPLv3**. Ver [LICENSE](LICENSE.txt).
+Licencia: **GNU GPLv3**. Ver [LICENSE](LICENSE.md).
 
 ## ✨ Características
 
@@ -112,5 +112,5 @@ Este proyecto está licenciado bajo la **GNU General Public License v3.0**.
 
 >Cualquiera puede usar, modificar y compartir Pypher. Pero si alguien lo mejora y lo distribuye, debe compartir sus mejoras bajo la misma licencia. Nadie puede convertirlo en un producto privado y cerrado.
 
-Consulta el archivo [LICENSE](LICENSE.txt) para más detalles.
+Consulta el archivo [LICENSE](LICENSE.md) para más detalles.
 
