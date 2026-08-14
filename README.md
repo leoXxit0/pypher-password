@@ -23,7 +23,7 @@ Licencia: **GNU GPLv3**. Ver [LICENSE](LICENSE.txt).
   mutaciones, combinaciones, fuerza bruta con patrones realistas).
 - Modo interactivo (menú) **y** modo no interactivo (línea de comandos),
   útil para integrarse en scripts.
-- Configuración persistente en `~/.config/pypher/config.json`.
+- Configuración persistente en `~/.config/pypher-password/config.json`.
 - Solo depende de la biblioteca estándar de Python (`pyperclip` es
   opcional, para copiar al portapapeles).
 
